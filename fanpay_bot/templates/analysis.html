@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Результат анализа</h2>
+    <p class="notice">Показаны категории из последнего снапшота.</p>
+    <a class="btn secondary" href="{{ url_for('game_detail', game_id=game_id) }}">Назад к игре</a>
+  </aside>
+  <section class="content">
+    <div class="card">
+      <h2>Сравнение категорий</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Категория</th>
+            <th>Лотов</th>
+            <th>Средняя цена</th>
+            <th>Медиана</th>
+            <th>Мин</th>
+            <th>Макс</th>
+            <th>Продажи/24ч</th>
+            <th>Спрос</th>
+            <th>Тренд%</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for report in reports %}
+          <tr>
+            <td>{{ report.category_name }}</td>
+            <td>{{ report.listing_count }}</td>
+            <td>{{ "%.2f"|format(report.average_price) }}</td>
+            <td>{{ "%.2f"|format(report.median_price) }}</td>
+            <td>{{ "%.2f"|format(report.min_price) }}</td>
+            <td>{{ "%.2f"|format(report.max_price) }}</td>
+            <td>{{ "%.2f"|format(report.avg_sold_24h) }}</td>
+            <td class="highlight">{{ "%.4f"|format(report.demand_score) }}</td>
+            <td>
+              {% if report.price_change_pct is not none %}
+                {{ "%.1f"|format(report.price_change_pct) }}%
+              {% else %}
+                n/a
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}

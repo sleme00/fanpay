@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="layout">
+  <aside class="sidebar">
+    <h2>{{ game.name }}</h2>
+    <p class="pill">ID: {{ game.game_id }}</p>
+    <form method="post" action="{{ url_for('snapshot') }}" class="stack">
+      <input type="hidden" name="game_id" value="{{ game.game_id }}">
+      <label>Категории для снапшота/анализа</label>
+      <div class="stack">
+        {% for category in categories %}
+          <label>
+            <input type="checkbox" name="category_ids" value="{{ category.category_id }}">
+            {{ category.name }}
+          </label>
+        {% endfor %}
+      </div>
+      <button class="btn" type="submit">Сохранить снапшот</button>
+      <button class="btn secondary" type="submit" formaction="{{ url_for('analyze') }}">Анализировать</button>
+    </form>
+    <hr style="border-color: #1f2937; margin: 18px 0;">
+    <h2>Добавить категорию</h2>
+    <form method="post" action="{{ url_for('create_category') }}" class="stack">
+      <input type="hidden" name="game_id" value="{{ game.game_id }}">
+      <label>Название</label>
+      <input name="name" placeholder="Например, валюта" required>
+      <label>Тип (опционально)</label>
+      <input name="item_type" placeholder="валюта / услуга / предмет">
+      <button class="btn secondary" type="submit">Создать категорию</button>
+    </form>
+  </aside>
+
+  <section class="content">
+    <div class="card">
+      <h2>Категории и объявления</h2>
+      <p class="notice">Добавляй лоты, чтобы потом сравнивать цены и спрос.</p>
+      {% for category in categories %}
+        <div class="card" style="margin-top: 16px;">
+          <div class="row" style="justify-content: space-between; align-items: center;">
+            <div>
+              <h3 style="margin-bottom: 6px;">{{ category.name }}</h3>
+              <span class="tag">{{ category.item_type or 'тип не указан' }}</span>
+            </div>
+            <form method="post" action="{{ url_for('create_listing') }}" class="row">
+              <input type="hidden" name="game_id" value="{{ game.game_id }}">
+              <input type="hidden" name="category_id" value="{{ category.category_id }}">
+              <input name="title" placeholder="Название лота" required>
+              <input name="price" type="number" step="0.01" min="0" placeholder="Цена" required>
+              <input name="currency" placeholder="RUB" value="RUB">
+              <input name="quantity" type="number" min="1" placeholder="Кол-во" value="1">
+              <input name="sold_24h" type="number" min="0" placeholder="Продаж/24ч" value="0">
+              <button class="btn" type="submit">Добавить лот</button>
+            </form>
+          </div>
+          <table style="margin-top: 12px;">
+            <thead>
+              <tr>
+                <th>Лот</th>
+                <th>Цена</th>
+                <th>Валюта</th>
+                <th>Кол-во</th>
+                <th>Продажи/24ч</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for listing in listing_map[category.category_id] %}
+                <tr>
+                  <td>{{ listing.title }}</td>
+                  <td>{{ "%.2f"|format(listing.price) }}</td>
+                  <td>{{ listing.currency }}</td>
+                  <td>{{ listing.quantity }}</td>
+                  <td>{{ listing.sold_24h }}</td>
+                </tr>
+              {% else %}
+                <tr>
+                  <td colspan="5" class="notice">Нет лотов. Добавь свой первый.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <p class="notice">Категорий пока нет. Создай их в панели слева.</p>
+      {% endfor %}
+    </div>
+  </section>
+</div>
+{% endblock %}
