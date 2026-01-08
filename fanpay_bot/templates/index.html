@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Доступные игры</h2>
+  <div class="grid">
+    {% for game in games %}
+      <div class="card">
+        <h3>{{ game.name }}</h3>
+        <p>ID: {{ game.game_id }}</p>
+        <a class="button" href="{{ url_for('game_detail', game_id=game.game_id) }}">Открыть</a>
+      </div>
+    {% else %}
+      <p>Нет доступных игр.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title or "FanPay Аналитика" }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f6f7fb; margin: 0; padding: 24px; color: #1f2937; }
+    header { margin-bottom: 24px; }
+    h1, h2 { margin: 0 0 12px; }
+    .card { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08); margin-bottom: 24px; }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .button { display: inline-block; padding: 10px 16px; border-radius: 8px; background: #2563eb; color: #fff; text-decoration: none; border: none; cursor: pointer; }
+    .button.secondary { background: #6b7280; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+    th { background: #f3f4f6; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { background: #e0f2fe; color: #075985; padding: 6px 10px; border-radius: 999px; font-size: 12px; }
+    .error { color: #b91c1c; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FanPay Аналитика</h1>
+    <p>Сравнивайте категории и смотрите спрос/цены.</p>
+  </header>
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <p class="error">{{ message }}</p>
+  <a class="button secondary" href="{{ url_for('index') }}">На главную</a>
+</div>
+{% endblock %}

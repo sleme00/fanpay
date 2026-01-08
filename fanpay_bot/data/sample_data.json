@@ -1,0 +1,36 @@
+{
+  "games": [
+    {"id": "wow", "name": "World of Warcraft"},
+    {"id": "cs2", "name": "Counter-Strike 2"}
+  ],
+  "categories": {
+    "wow": [
+      {"id": "gold", "name": "Золото", "type": "валюта"},
+      {"id": "boost", "name": "Услуги", "type": "услуга"}
+    ],
+    "cs2": [
+      {"id": "skins", "name": "Скины", "type": "предмет"},
+      {"id": "boost", "name": "Услуги", "type": "услуга"}
+    ]
+  },
+  "listings": {
+    "wow": {
+      "gold": [
+        {"id": "wow-gold-1", "title": "100k золота", "price": 350, "currency": "RUB", "quantity": 1, "sold_24h": 12},
+        {"id": "wow-gold-2", "title": "50k золота", "price": 200, "currency": "RUB", "quantity": 1, "sold_24h": 5}
+      ],
+      "boost": [
+        {"id": "wow-boost-1", "title": "Рейд мифик", "price": 1200, "currency": "RUB", "quantity": 1, "sold_24h": 2}
+      ]
+    },
+    "cs2": {
+      "skins": [
+        {"id": "cs2-skin-1", "title": "AK-47 Redline", "price": 4500, "currency": "RUB", "quantity": 1, "sold_24h": 1},
+        {"id": "cs2-skin-2", "title": "AWP Asiimov", "price": 8900, "currency": "RUB", "quantity": 1, "sold_24h": 1}
+      ],
+      "boost": [
+        {"id": "cs2-boost-1", "title": "Повышение ранга", "price": 1500, "currency": "RUB", "quantity": 1, "sold_24h": 3}
+      ]
+    }
+  }
+}

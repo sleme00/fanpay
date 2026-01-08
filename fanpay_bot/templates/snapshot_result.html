@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>Снапшот сохранен</h2>
+  <p>Сохранено лотов: <strong>{{ total_listings }}</strong></p>
+  <a class="button" href="{{ url_for('game_detail', game_id=game_id) }}">Вернуться к игре</a>
+</div>
+{% endblock %}

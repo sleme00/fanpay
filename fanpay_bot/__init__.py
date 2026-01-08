@@ -1,0 +1,1 @@
+"""FanPay analytics Discord bot."""

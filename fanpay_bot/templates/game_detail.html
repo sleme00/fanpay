@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+  <h2>{{ game.name }}</h2>
+  <p>Выберите категории для снапшота или анализа.</p>
+  <form method="post" action="{{ url_for('snapshot') }}" class="card">
+    <input type="hidden" name="game_id" value="{{ game.game_id }}">
+    <div class="chips">
+      {% for category in categories %}
+        <label class="chip">
+          <input type="checkbox" name="category_ids" value="{{ category.category_id }}">
+          {{ category.name }} ({{ category.item_type or 'тип не указан' }})
+        </label>
+      {% endfor %}
+    </div>
+    <div style="margin-top: 16px; display: flex; gap: 12px;">
+      <button class="button" type="submit">Сделать снапшот</button>
+      <button class="button secondary" type="submit" formaction="{{ url_for('analyze') }}">Анализировать</button>
+    </div>
+  </form>
+  <a class="button secondary" href="{{ url_for('index') }}">Назад</a>
+</div>
+{% endblock %}
