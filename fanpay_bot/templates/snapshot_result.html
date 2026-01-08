@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card">
-  <h2>Снапшот сохранен</h2>
-  <p>Сохранено лотов: <strong>{{ total_listings }}</strong></p>
-  <a class="button" href="{{ url_for('game_detail', game_id=game_id) }}">Вернуться к игре</a>
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Снапшот сохранен</h2>
+    <p class="notice">Лотов в снимке: <strong>{{ total_listings }}</strong></p>
+    <a class="btn" href="{{ url_for('game_detail', game_id=game_id) }}">Назад к игре</a>
+  </aside>
+  <section class="content">
+    <div class="card">
+      <h2>Что дальше</h2>
+      <p class="notice">Сделай ещё один снапшот завтра, чтобы увидеть динамику цен.</p>
+    </div>
+  </section>
 </div>
 {% endblock %}

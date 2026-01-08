@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card">
-  <p class="error">{{ message }}</p>
-  <a class="button secondary" href="{{ url_for('index') }}">На главную</a>
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Ошибка</h2>
+    <p class="error">{{ message }}</p>
+    <a class="btn secondary" href="{{ url_for('index') }}">На главную</a>
+  </aside>
 </div>
 {% endblock %}

@@ -1,17 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card">
-  <h2>Доступные игры</h2>
-  <div class="grid">
-    {% for game in games %}
-      <div class="card">
-        <h3>{{ game.name }}</h3>
-        <p>ID: {{ game.game_id }}</p>
-        <a class="button" href="{{ url_for('game_detail', game_id=game.game_id) }}">Открыть</a>
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Поиск игры</h2>
+    <form method="get" action="{{ url_for('index') }}">
+      <label for="q">Название игры</label>
+      <input id="q" name="q" placeholder="Введи игру" value="{{ query }}">
+      <button class="btn" type="submit">Найти</button>
+    </form>
+    <hr style="border-color: #1f2937; margin: 18px 0;">
+    <h2>Добавить игру</h2>
+    <form method="post" action="{{ url_for('create_game') }}">
+      <label for="name">Название</label>
+      <input id="name" name="name" placeholder="Например, Lineage 2" required>
+      <button class="btn secondary" type="submit">Создать игру</button>
+    </form>
+    <p class="notice">После создания можно добавлять категории и лоты.</p>
+  </aside>
+
+  <section class="content">
+    <div class="card">
+      <h2>Результаты поиска</h2>
+      <div class="grid">
+        {% for game in games %}
+          <div class="card">
+            <h3>{{ game.name }}</h3>
+            <p class="notice">ID: {{ game.game_id }}</p>
+            <a class="btn" href="{{ url_for('game_detail', game_id=game.game_id) }}">Открыть дашборд</a>
+          </div>
+        {% else %}
+          <p class="notice">Игры не найдены. Добавь свою и начни собирать данные.</p>
+        {% endfor %}
       </div>
-    {% else %}
-      <p>Нет доступных игр.</p>
-    {% endfor %}
-  </div>
+    </div>
+  </section>
 </div>
 {% endblock %}

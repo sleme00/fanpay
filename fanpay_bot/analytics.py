@@ -8,6 +8,7 @@ from fanpay_bot.models import Listing
 @dataclass(frozen=True)
 class CategoryReport:
     category_id: str
+    category_name: str
     listing_count: int
     average_price: float
     median_price: float
@@ -22,7 +23,12 @@ def _safe_average(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
 
-def summarize_category(current: Iterable[Listing], previous: Iterable[Listing]) -> CategoryReport:
+def summarize_category(
+    current: Iterable[Listing],
+    previous: Iterable[Listing],
+    category_id: str,
+    category_name: str,
+) -> CategoryReport:
     current_list = list(current)
     prices = [item.price for item in current_list]
     sold = [item.sold_24h for item in current_list]
@@ -42,7 +48,8 @@ def summarize_category(current: Iterable[Listing], previous: Iterable[Listing]) 
         price_change_pct = None
 
     return CategoryReport(
-        category_id=current_list[0].category_id if current_list else "",
+        category_id=category_id,
+        category_name=category_name,
         listing_count=listing_count,
         average_price=average_price,
         median_price=median_price,
