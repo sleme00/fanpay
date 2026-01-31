@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ЛюменСинема — онлайн кинотеатр</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="logo">Люмен<span>Синема</span></div>
+        <nav class="nav">
+          <a href="#catalog">Каталог</a>
+          <a href="#actors">Актёры</a>
+          <a href="#about">О проекте</a>
+        </nav>
+        <button class="primary-btn">Войти</button>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-text">
+            <p class="eyebrow">Онлайн кинотеатр</p>
+            <h1>Смотрите фильмы и узнавайте больше о любимых актёрах.</h1>
+            <p class="subtitle">
+              ЛюменСинема объединяет подборки фильмов и досье актёров в одной стильной
+              витрине.
+            </p>
+            <div class="hero-actions">
+              <button class="primary-btn">Открыть подборки</button>
+              <button class="ghost-btn">Смотреть трейлеры</button>
+            </div>
+            <div class="hero-badges">
+              <div>
+                <h3>560+</h3>
+                <p>фильмов</p>
+              </div>
+              <div>
+                <h3>120+</h3>
+                <p>актёров</p>
+              </div>
+              <div>
+                <h3>24/7</h3>
+                <p>доступ</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="card-header">
+              <span>Сейчас в тренде</span>
+              <strong>«Северный меридиан»</strong>
+            </div>
+            <div class="card-body">
+              <p>Научно-фантастический триллер о поиске новой планеты.</p>
+              <ul>
+                <li>Год: 2024</li>
+                <li>Жанр: Sci-Fi, драма</li>
+                <li>Рейтинг: 8.7</li>
+              </ul>
+            </div>
+            <button class="primary-btn">Смотреть</button>
+          </div>
+        </section>
+
+        <section class="catalog" id="catalog">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Каталог</p>
+              <h2>Информация о фильмах и актёрах</h2>
+            </div>
+            <div class="filters">
+              <button class="chip active" data-view="films">Фильмы</button>
+              <button class="chip" data-view="actors">Актёры</button>
+            </div>
+          </div>
+
+          <div class="search-panel">
+            <div>
+              <label for="search" class="label">Поиск по названию</label>
+              <input id="search" type="text" placeholder="Например, Мягкий рассвет" />
+            </div>
+            <div>
+              <label for="genre" class="label">Жанр / направление</label>
+              <select id="genre">
+                <option value="">Все</option>
+              </select>
+            </div>
+            <div>
+              <label class="label">Акцент</label>
+              <p class="hint">Выберите карточку, чтобы увидеть подробности.</p>
+            </div>
+          </div>
+
+          <div class="catalog-grid">
+            <div class="cards" id="cards"></div>
+            <aside class="details" id="details">
+              <div class="details-header">
+                <p class="eyebrow">Детали</p>
+                <h3>Выберите карточку</h3>
+              </div>
+              <p class="details-text">
+                Мы подготовили краткие досье, чтобы было проще выбрать фильм на вечер или
+                узнать, где ещё снимался любимый актёр.
+              </p>
+              <div class="details-meta" id="detailsMeta"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="actors" id="actors">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Коллекции</p>
+              <h2>Подборки для настроения</h2>
+            </div>
+          </div>
+          <div class="collections">
+            <article>
+              <h3>Космос и будущее</h3>
+              <p>Сериалы и фильмы о технологических прорывах и дальних миссиях.</p>
+            </article>
+            <article>
+              <h3>Герои нашего времени</h3>
+              <p>Истории о сильных людях, которые меняют город и самих себя.</p>
+            </article>
+            <article>
+              <h3>Музыкальные вечера</h3>
+              <p>Ленты, в которых музыка ведёт сюжет и вдохновляет зрителя.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="about" id="about">
+          <div class="about-card">
+            <div>
+              <p class="eyebrow">О проекте</p>
+              <h2>ЛюменСинема — новое прочтение онлайн кинотеатра</h2>
+            </div>
+            <p>
+              Мы показываем кино через факты, рекомендации и истории актёров. Открывайте
+              карточки, фильтруйте по жанрам и сохраняйте личные подборки.
+            </p>
+            <div class="about-actions">
+              <button class="primary-btn">Создать подборку</button>
+              <button class="ghost-btn">Связаться с нами</button>
+            </div>
+          </div>
+          <div class="about-features">
+            <div>
+              <h4>Персональные рекомендации</h4>
+              <p>Алгоритм учитывает настроение и жанровые предпочтения.</p>
+            </div>
+            <div>
+              <h4>Синхронизация устройств</h4>
+              <p>Продолжайте просмотр с любого устройства без потери прогресса.</p>
+            </div>
+            <div>
+              <h4>Качественные досье</h4>
+              <p>Биографии актёров и заметки о съёмках в одном месте.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div>
+          <strong>ЛюменСинема</strong>
+          <p>Онлайн кинотеатр нового поколения.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#catalog">Каталог</a>
+          <a href="#actors">Актёры</a>
+          <a href="#about">О проекте</a>
+        </div>
+        <p class="copyright">© 2025 ЛюменСинема</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
